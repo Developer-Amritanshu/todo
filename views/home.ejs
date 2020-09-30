@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head'); %>
+</head>
+<body>
+  
+  <%  if(message === 'Saturday' || message === 'Sunday'){ %>
+      <h1 style="color: green;"><%= message %></h1>
+      <%  }else { %>
+      <h1 style="color: orange;"><%= message %></h1>
+      <% }  %>
+
+      <ul>
+      <% item.forEach(element => { %>
+        <form action="/delete" method="post">
+          <li><input type ="checkbox" name="checkbox" value="<%= element._id %>" onchange="this.form.submit()" style="margin: 10px;"><%= element.name %></li> 
+        </form>
+        <% }); %>
+      </ul>
+    </form >
+
+  <form action="/" method="post">
+    <input type="text" autocomplete="off" pattern=".*\S+.*" title="don't try to add space" required name="item" id="item">
+    <button type="submit">ADD</button>
+  </form>
+  
+</body>
+<%- include('./partials/footer'); %>
+
+</html>
